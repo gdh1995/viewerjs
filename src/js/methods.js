@@ -33,7 +33,6 @@ import {
   addListener,
   assign,
   dispatchEvent,
-  escapeHTMLEntities,
   forEach,
   getData,
   getOffset,
@@ -300,9 +299,9 @@ export default {
       const { imageData } = this;
       const render = Array.isArray(options.title) ? options.title[1] : options.title;
 
-      title.innerHTML = escapeHTMLEntities(isFunction(render)
+      title.textContent = isFunction(render)
         ? render.call(this, image, imageData)
-        : `${alt} (${imageData.naturalWidth} × ${imageData.naturalHeight})`);
+        : `${alt} (${imageData.naturalWidth} × ${imageData.naturalHeight})`;
     };
     let onLoad;
 
